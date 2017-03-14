@@ -1,0 +1,72 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title> Rank the recommendation we made for you : </title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/foodapp.css' %}">
+	</head>	
+
+	<body>
+
+		<h2> Rank the recommendation we made for you : </h2>
+
+		<div>
+			{% comment %}
+				{% if messages %}
+			    	{% for message in messages %}
+			        	<p>{{ message }}</p>
+			    	{% endfor %}
+				{% endif %}
+			{% endcomment %}
+			
+			<form method="post">
+			    {% csrf_token %}
+			
+				{{ rankrecipe_formset.management_form }}
+			
+			    {% for rankrecipe_form in rankrecipe_formset %}
+			        <div class="rankrecipe_formset">
+			            {{ rankrecipe_form.recipe_name }}  
+			    
+			            {{ rankrecipe_form.ranking }}
+			            {% if rankrecipe_form.url.errors %}
+			                {% for error in rankrecipe_form.url.errors %}
+			                    {{ error|escape }}
+			                {% endfor %}
+			            {% endif %}
+			        </div>
+			    {% endfor %}
+			
+			    {% if rankrecipe_formset.non_form_errors %}
+			        {% for error in rankrecipe_formset.non_form_errors %}
+			            {{ error|escape }}
+			        {% endfor %}
+			    {% endif %}
+
+		</div>
+
+		    
+		
+		    <input type="submit" value="Update Rankings" class="button"/>
+		</form>
+
+
+		<!-- Include formset plugin - including jQuery dependency -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="{% static 'path_to/jquery.formset.js' %}"></script>
+		<script>
+		    $('.rankrecipe-formset').formset({
+		        addRanking: 'add ranking',
+		        deleteText: 'remove'
+		    });
+		</script>
+
+		<a href={% url 'foodapp:index' %} class="btn btn-default">Back to Homepage</a>
+
+	</body>
+</html>		
+
+  

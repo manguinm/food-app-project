@@ -1,0 +1,18 @@
+.page-header {
+    background-color: #ff9400;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+
+h1 {
+	color: #625772;
+}	
+
+h2 {
+	color: ##F9A1BC;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Raleway', sans-serif;
+}

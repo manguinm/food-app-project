@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title> Ingredients info </title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/foodapp.css' %}">
+	</head>	
+
+	<body>
+
+		<h1>Give me recipes ideas and a grocery list!</h1>
+		<a href = {% url 'foodapp:model_results' %} > Go ! </a>
+
+		<!--
+		 <form action="{% url 'foodapp:model_results' %}" method="post">
+		 {% csrf_token %}
+		 <button type="button">Go!</button>
+		 </form>
+		--> 
+	</body>
+</html>		

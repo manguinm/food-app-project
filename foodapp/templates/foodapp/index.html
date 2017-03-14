@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title> Ingredients info </title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/foodapp.css' %}">
+	</head>	
+
+	<body>
+		<h1> Home </h1>
+			<h4> Rank some ingredients to begin : </h4>
+		{% if ingredient_list %}
+		    <ul>
+		    {% for ing in ingredient_list %}
+		        <li><a href="{% url 'foodapp:ingredient_detail' ing.iid %}">{{ ing.ingredient_name }}</a></li>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No ingredients are available.</p>
+		{% endif %}
+
+			<h4> Or just get a recommendation <a href="{% url 'foodapp:run_model'%}"> right now </a> </h4>
+	</body>
+</html>				

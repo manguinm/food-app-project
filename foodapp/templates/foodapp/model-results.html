@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title> Fresh recommendendation </title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/foodapp.css' %}">
+	</head>	
+
+	<body>
+		<h2> Fresh recommendations for you : </h2>
+		{% if selected_recipes %}
+		    <ul>
+		    {% for recipe in selected_recipes %}
+		        <li>
+		        	<h4>{{ recipe.recipe_name }}</h4>
+		        	<p> {{ recipe.instructions }} </p>
+		        </li>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No recipes are recommended.</p>
+		{% endif %}
+
+		<h3> Like it or not? Give us some <a href={% url 'foodapp:rank_output' %} >feedback</a> </h3>
+		
+
+		
+		<a href = {% url 'foodapp:index' %} class="btn btn-default" > Back to homepage. </a>
+	</body>
+</html>				
+
+
+
+ {% comment %}
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+	<form action="{% url 'foodapp:rank_recipe' recipe.rid %}" method="post">
+	{% csrf_token %}
+	{% for recipe in selected_recipes %}
+	    <input type="range" name="recipe-ranking" id="recipe{{ forloop.counter }}" value="{{ recipe.rid }}" min=0 		max=10 step=1 onchange="		updateTextInput(this.value);"/>
+		<input type="text" id="textInput" value="">
+			
+		<script type="text/javascript">
+			function updateTextInput(val) {
+				document.getElementById('textInput').value=val; 
+			}
+		</script>
+	{% endfor %}
+	<input type="submit" value="Rank" />
+	</form>
+ {% endcomment %}
