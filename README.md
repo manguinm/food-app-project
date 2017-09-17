@@ -13,6 +13,8 @@ Built in Django, using PuLP for integer-linear programming, PostgreSQL as the da
 
 Research around recipes similarities can be found in the folder `drafts`, in Jupyter notebooks format. 
 
+Source code for clustering of recipes into types of cuisine can be found in the folder `recipes-classification`.
+
 ### Requirements:
 * Python 3.6
 
