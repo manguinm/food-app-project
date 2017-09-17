@@ -21,3 +21,10 @@ Research around recipes similarities can be found in the folder `drafts`, in Jup
 * last version of Django (1.11 or later)
   * first, upgrade pip : `(myvenv) ~$ pip install --upgrade pip`
   * second, install Django using pip : `(myvenv) ~$ pip install django~=1.11.0`
+
+
+### Getting started
+
+* Download the repo
+* In the current project directory, start the server by typing in the command line: `python manage.py runserver`
+* Access the web app home page at the follozing URL: `http://127.0.0.1:8000/foodapp/`
