@@ -17,8 +17,10 @@ pulp_path = os.path.join(BASE_DIR, 'pulp/')
 # Create your views here.
 
 def index(request):
-	ingredient_list= Ingredient.objects.order_by('iid')[:20] # display on 10 first ingredients
-	context = {'ingredient_list': ingredient_list}
+	#ingredient_list= Ingredient.objects.order_by('iid')[:20] # display on 10 first ingredients
+	recipe_list= Recipe.objects.order_by('rid')[:20] # display on 10 first recipes
+	#context = {'ingredient_list': ingredient_list}
+	context = {'recipe_list': recipe_list}
 	return render(request, 'foodapp/index.html', context)
 
 def ingredient_detail(request, ingredient_id):
@@ -28,6 +30,10 @@ def ingredient_detail(request, ingredient_id):
 def preferences_ingredient(request, ingredient_id):
 	ingredient = get_object_or_404(Ingredient, pk=ingredient_id)
 	return render(request, 'foodapp/preferences-ingredient.html', {'ingredient': ingredient})  
+
+def recipe_detail(request, recipe_id):
+	recipe = get_object_or_404(Recipe, pk=recipe_id)
+	return render(request, 'foodapp/recipe-detail.html', {'recipe': recipe})
 
 
 def rank_ingredient(request, ingredient_id):

@@ -5,7 +5,9 @@ from . import views
 app_name = 'foodapp'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    # ex: /foodapp/5/
+    # ex: /foodapp/recipes/5/
+    url(r'^recipes/(?P<recipe_id>[0-9]+)/$', views.recipe_detail, name='recipe_detail'),
+    # ex: foodapp/3
     url(r'^(?P<ingredient_id>[0-9]+)/$', views.ingredient_detail, name='ingredient_detail'),
     # ex: /foodapp/5/preferences-ingredient/
     url(r'^(?P<ingredient_id>[0-9]+)/preferences-ingredient/$', views.preferences_ingredient, name='preferences_ingredient'),

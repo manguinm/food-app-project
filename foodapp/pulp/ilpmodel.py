@@ -67,6 +67,7 @@ dict_fat_ints = dict((k,int(v)) for k,v in dict_calories.items())
 
 # Parameters for recipes
 dict_nbofsteps = dict(Recipe.objects.values_list('rid', 'number_steps'))
+dict_rankings = dict(Recipe.objects.values_list('rid', 'ranking'))
 
 
 '''
@@ -154,7 +155,7 @@ meals_min = 10;
 
 
 # Objective function added to the prob variable first
-prob += lpSum(ingredient_vars[j]*dict_weights[j] for j in idx_ingredients), "Maximize user preferences for ingredients"
+prob += lpSum(ingredient_vars[j]*dict_weights[j] for j in idx_ingredients) + lpSum(recipe_vars[i]*dict_rankings[i] for i in idx_recipes), "Maximize user preferences for ingredients AND RECIPES"
 
 # Adding constraints :
 

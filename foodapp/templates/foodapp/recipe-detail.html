@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title> Recipe info </title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/foodapp.css' %}">
+	</head>	
+
+	<body>
+
+		<div>
+			<h1>{{ recipe.recipe_name }}</h1>
+			
+			<h2> Preferences </h2>
+				<p> Your preferences for this recipe are : {{recipe.ranking}} </p>
+				<p> Do you want to change them ? You can do it <a href="{% url 'foodapp:preferences_ingredient' 	ingredient.iid %}">here</a> </p>
+			
+			<h2> Cooking information </h2>
+				<ul>
+					<li> Number of steps : {{recipe.number_steps}} </li>
+					<li> Instructions: {{recipe.instructions}}  </li>
+
+		</div>			
+			
+		
+		<!-- <a href = {% url 'foodapp:index' %} > Back to homepage. </a> -->
+		<div>
+			<a href={% url 'foodapp:index' %} class="btn btn-default">Back to Homepage</a>
+		</div>	
+	</body>	
+</html>	
+		

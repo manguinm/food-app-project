@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="{% static 'css/foodapp.css' %}">
 	</head>	
 
-	<body>
+	<!-- <body>
 		<h1> Home </h1>
 			<h4> Rank some ingredients to begin : </h4>
 		{% if ingredient_list %}
@@ -23,5 +23,22 @@
 		{% endif %}
 
 			<h4> Or just get a recommendation <a href="{% url 'foodapp:run_model'%}"> right now </a> </h4>
+	</body> -->
+
+	<body>
+		<h1> Home </h1>
+			<h4> Rank some recipes to begin : </h4>
+		{% if recipe_list %}
+		    <ul>
+		    {% for rec in recipe_list %}
+		        <li><a href="{% url 'foodapp:recipe_detail' rec.rid %}">{{ rec.recipe_name }}</a></li>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No recipes are available.</p>
+		{% endif %}
+
+			<h4> Or just get a recommendation <a href="{% url 'foodapp:run_model'%}"> right now </a> </h4>
 	</body>
-</html>				
+
+</html>		
